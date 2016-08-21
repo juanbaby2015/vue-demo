@@ -14,8 +14,8 @@
 <style lang="sass">
   .head {
 
-		//background: url('../assets/images/headerbg.png') ;
-		background-color:#000;
+		background: url('../assets/images/headerbg.png') ;
+		//background-color:#000;
 		border-color: #101010;
 		color:#fff;
 		.log {

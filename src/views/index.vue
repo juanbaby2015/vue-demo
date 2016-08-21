@@ -4,7 +4,7 @@
   
 </template>
 <script>
-    require('../assets/scss/bootstrap.css');
+   require('../assets/scss/bootstrap.css');
 
     export default {
         data(){

@@ -9,7 +9,7 @@ npm install webpack-dev-server
 npm install node-sass -g
 
 
-#启动服务(http://localhost:8079)
+#启动服务(http://localhost:8092)
 node server.js
 
 #发布代码
