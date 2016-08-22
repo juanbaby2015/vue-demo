@@ -29,6 +29,7 @@
 	width: 160px;
 	height:600px;
 	border-right:#eee 1px solid;
+	border-bottom:#eee 1px solid;
 	ul {
 		li {
 

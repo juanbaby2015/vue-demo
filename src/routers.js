@@ -13,6 +13,12 @@ export default function(router){
             component: function(resolve){
                 require(['./views/presell.vue'],resolve);
             }
+        },
+        '/enrollpro':{                //分类
+            name:'enrollpro',
+            component: function(resolve){
+                require(['./components/enrollpro.vue'],resolve);
+            }
         }
         // '/item/:id':{               //专题
         //     name:'item',
