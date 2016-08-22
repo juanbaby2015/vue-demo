@@ -60,7 +60,7 @@
 	</table>
 </template>
 <script>
-	require('../assets/js/libs/layer/skin/layer.css');
+	// require('../assets/js/libs/layer/skin/layer.css');
 	require('../assets/js/libs/layer/layer.js');
     export default {
         replace:true,
