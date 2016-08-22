@@ -14,10 +14,10 @@ export default function(router){
                 require(['./views/presell.vue'],resolve);
             }
         },
-        '/enrollpro':{                //分类
-            name:'enrollpro',
+        '/ifrmPr':{                //分类
+            name:'ifrmPr',
             component: function(resolve){
-                require(['./components/enrollpro.vue'],resolve);
+                require(['./views/ifrmPr.vue'],resolve);
             }
         }
         // '/item/:id':{               //专题

@@ -21,7 +21,7 @@
 
 </template>
 <script>
-	require('../assets/js/libs/layer/layer.js');
+	
     export default {
         replace:true,
         props: ['products'],

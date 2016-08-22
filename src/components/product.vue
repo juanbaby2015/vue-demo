@@ -60,6 +60,7 @@
 	</table>
 </template>
 <script>
+	require('../assets/js/libs/layer/layer.js');
     export default {
         replace:true,
         props: ['products'],
@@ -71,7 +72,7 @@
 				  shadeClose: true,
 				  shade: 0.8,
 				  area: ['380px', '90%'],
-				  content: ''
+				  content: '#/ifrmPr' //iframe的url
 				}); 
             }
         }
