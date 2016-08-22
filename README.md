@@ -3,7 +3,6 @@
 #安装依赖
 npm install 
 
-npm install webpack-dev-server
 
 #安装node-sass
 npm install node-sass -g

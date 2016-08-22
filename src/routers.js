@@ -2,18 +2,18 @@
 export default function(router){
     router.map({
         '/':{				//首页
-            name:'home',
+            name:'list',
             component: function(resolve){
                 require(['./views/index.vue'],resolve);
             }
         }
         ,
-        // '/sort':{				//分类
-        //     name:'sort',
-        //     component: function(resolve){
-        //         require(['./views/sort.vue'],resolve);
-        //     }
-        // },
+        '/presell':{				//分类
+            name:'presell',
+            component: function(resolve){
+                require(['./views/presell.vue'],resolve);
+            }
+        }
         // '/item/:id':{               //专题
         //     name:'item',
         //     component: function(resolve){
