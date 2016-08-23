@@ -16,7 +16,7 @@
                     {link:'',sname:'活动列表'},
                     {link:'presell',sname:'预售活动报名'},
                     {link:'skill',sname:'秒杀商品列表'},
-                    {link:'list',sname:'秒杀活动报名'}
+                    {link:'choiceclass',sname:'选择类目'}
                     
                 ]
         	}

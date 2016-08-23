@@ -14,10 +14,17 @@ export default function(router){
                 require(['./views/presell.vue'],resolve);
             }
         },
-        '/ifrmPr':{                //分类
-            name:'ifrmPr',
+        '/choiceclass':{                //分类
+            name:'choiceclass',
             component: function(resolve){
-                require(['./views/ifrmPr.vue'],resolve);
+                require(['./views/choiceclass.vue'],resolve);
+            }
+        },
+        
+        '/skill':{                //分类
+            name:'skill',
+            component: function(resolve){
+                require(['./views/skill.vue'],resolve);
             }
         }
         // '/item/:id':{               //专题

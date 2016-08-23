@@ -2,7 +2,7 @@
     <hditem></hditem>
     <lfbar ></lfbar>
     <div class="main">
-            <h3 class="tit">活动报名</h3>
+            <p class="tit">活动报名</p>
         <ul class="ac_list">
              <li v-for="list in activitylist">
                 <a href="{{list.link}}"  target="_blank">
@@ -25,7 +25,7 @@
 </template>
 <script>
    
-
+    require('../assets/scss/common.scss');
     export default {
         data(){
             return {
@@ -46,16 +46,12 @@
     }
 </script>
 <style lang="sass">
-    .top{
-        width: 100%;
-        height: 3rem;
-    }
     .main {
-        margin-left: 180px;
-        border:#eee 1px solid;
-        height: 600px;
-        .tit {
+       
+        >.tit {
             text-align: center;
+            font-size:18px;
+            padding-top:20px
         }
         .ac_list {
             list-style: none;

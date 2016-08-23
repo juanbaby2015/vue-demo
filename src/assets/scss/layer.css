@@ -1,0 +1,111 @@
+.layui-layer-shade {
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    _height: expression(document.body.offsetHeight+"px");
+}
+.layer-anim {
+    -webkit-animation-name: bounceIn;
+    animation-name: bounceIn;
+}
+.layui-layer {
+    border-radius: 2px;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+    -webkit-animation-duration: .3s;
+    animation-duration: .3s;
+}
+.layui-layer {
+    top: 150px;
+    left: 0;
+    margin: 0;
+    padding: 0;
+    background-color: #fff;
+    -webkit-background-clip: content;
+    box-shadow: 1px 1px 50px rgba(0,0,0,.3);
+}
+.layui-layer {
+    -webkit-overflow-scrolling: touch;
+}
+
+.layui-layer-shade, .layui-layer {
+    position: fixed;
+    _position: absolute;
+    pointer-events: auto;
+}
+.layui-layer-title {
+    padding: 0 80px 0 20px;
+    height: 42px;
+    line-height: 42px;
+    border-bottom: 1px solid #eee;
+    font-size: 14px;
+    color: #333;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    background-color: #F8F8F8;
+    border-radius: 2px 2px 0 0;
+}
+.layui-layer-iframe .layui-layer-content {
+    overflow: hidden;
+}
+.layui-layer-content {
+    position: relative;
+}
+.layui-layer-setwin {
+    position: absolute;
+    right: 15px;
+    top: 15px;
+    font-size: 0;
+    line-height: initial;
+}
+.layui-layer-setwin .layui-layer-close1 {
+    background-position: 0 -40px;
+    cursor: pointer;
+}
+.layui-layer-setwin a {
+    position: relative;
+    width: 16px;
+    height: 16px;
+    margin-left: 10px;
+    font-size: 12px;
+    _overflow: hidden;
+}
+.layui-layer-setwin .layui-layer-close1 {
+    background-position: 0 -40px;
+    cursor: pointer;
+}
+.layui-layer-setwin a {
+    position: relative;
+    width: 16px;
+    height: 16px;
+    margin-left: 10px;
+    font-size: 12px;
+    _overflow: hidden;
+}
+.layui-layer-dialog .layui-layer-ico, .layui-layer-setwin a, .layui-layer-btn a {
+    display: inline-block;
+    vertical-align: top;
+}
+
+.layui-layer-close {
+    position: absolute;
+}
+a {
+    color: #444;
+    text-decoration: none;
+}
+.layui-layer-ico {
+    background: url(../images/icon.png) no-repeat;
+}
+.layui-layer-setwin .layui-layer-close2 {
+    position: absolute;
+    right: -28px;
+    top: -28px;
+    width: 30px;
+    height: 30px;
+    margin-left: 0;
+    background-position: -149px -31px;
+    _display: none;
+}
