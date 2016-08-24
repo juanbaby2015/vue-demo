@@ -23,7 +23,7 @@ var plugins = [
 ];
 var entry = ['./src/main'],
     cdnPrefix = "",
-    buildPath = "/dist/",
+    buildPath = "http://localhost:8092/dist/",
     publishPath = cdnPrefix + buildPath;
 //生产环境js压缩和图片cdn
 if (isProduction()) {

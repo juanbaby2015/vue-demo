@@ -26,6 +26,12 @@ export default function(router){
             component: function(resolve){
                 require(['./views/skill.vue'],resolve);
             }
+        },
+        '/login':{
+             name:'login',
+            component: function(resolve){
+                require(['./views/login.vue'],resolve);
+            }
         }
         // '/item/:id':{               //专题
         //     name:'item',
