@@ -26,9 +26,10 @@
 </script>
 <style lang="sass">
   .head {
-		background-color:#000;
-		border-color: #101010;
-		color:#fff;
+		padding: 10px 0;
+		color: #fff;
+		background-color: #286090;
+		border-color: #204d74;
 		.log {
 			display: inline-block;
 			color:#fff;

@@ -4,7 +4,9 @@ export default function(router){
         '/':{				//首页
             name:'list',
             component: function(resolve){
+
                 require(['./views/index.vue'],resolve);
+                
             }
         }
         ,
@@ -32,7 +34,20 @@ export default function(router){
             component: function(resolve){
                 require(['./views/login.vue'],resolve);
             }
+        },
+        '/ordinaryEdt':{
+             name:'ordinaryEdt',
+            component: function(resolve){
+                require(['./views/ordinaryEdt.vue'],resolve);
+            }
+        },
+         '/skillEdt':{
+             name:'skillEdt',
+            component: function(resolve){
+                require(['./views/skillEdt.vue'],resolve);
+            }
         }
+
         // '/item/:id':{               //专题
         //     name:'item',
         //     component: function(resolve){

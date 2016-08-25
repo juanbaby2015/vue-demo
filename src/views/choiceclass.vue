@@ -1,31 +1,34 @@
 <template>
 	<hditem></hditem>
-	<lfbar ></lfbar>
-	<div class="main page-choice">
-		<div class="clearfix w">
-			<span class="tit">选择类目</span>
-			<div class="input-group mysearch">
-				<input type="text" class="form-control" placeholder="选择您所需要的类目">
-				<span class="input-group-btn">
-					<button class="btn btn-default" type="button">搜索</button>
-				</span>
+	<div class="clearfix">
+		<lfbar ></lfbar>
+		<div class="main page-choice">
+			<div class="clearfix w">
+				<span class="tit">选择类目</span>
+				<div class="input-group mysearch">
+					<input type="text" class="form-control" placeholder="选择您所需要的类目">
+					<span class="input-group-btn">
+						<button class="btn btn-default" type="button">搜索</button>
+					</span>
+				</div>
 			</div>
-		</div>
-		<div class="lm">
-			<div class="ceil">
-				<div>类目1</div>
-				<div>类目1</div>
-				<div>类目</div>
-				<div>类目1</div>
-				<div>类目1</div>
+			<div class="lm">
+				<div class="ceil">
+					<div>类目1</div>
+					<div>类目1</div>
+					<div>类目</div>
+					<div>类目1</div>
+					<div>类目1</div>
+				</div>
+				<span class="ar glyphicon glyphicon-chevron-right"></span>
+				<div class="ceil"></div>
+				<span class="ar glyphicon glyphicon-chevron-right"></span>
+				<div class="ceil"></div>
 			</div>
-			<span class="ar glyphicon glyphicon-chevron-right"></span>
-			<div class="ceil"></div>
-			<span class="ar glyphicon glyphicon-chevron-right"></span>
-			<div class="ceil"></div>
+			<button type="button" class="btn btn-primary next-step">下一步</button>
 		</div>
-		<button type="button" class="btn btn-primary next-step">下一步</button>
 	</div>
+	
 </template>
 <script>
  require('../assets/scss/common.scss');

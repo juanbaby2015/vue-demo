@@ -1,27 +1,30 @@
 <template>
     <hditem></hditem>
-    <lfbar ></lfbar>
-    <div class="main">
+    <div class="clearfix">
+        <lfbar ></lfbar>
+        <div class="main">
             <p class="tit">活动报名</p>
-        <ul class="ac_list">
-             <li v-for="list in activitylist">
-                <a href="{{list.link}}"  target="_blank">
-                    <div>
-                      <img  src='../assets/images/lista.png'>  
-                    </div>
-                    <div class="ct">
-                        <p class="tit">镇江derlock预售活动</p>
-                        <hr class="ln">
-                        <p>报名时间: <span> 8月15-8月26</span></p>
-                        <p>所属商场:<span>镇江第六空间</span></p>
-                    </div>
+            <ul class="ac_list">
+                 <li v-for="list in activitylist">
+                    <a href="{{list.link}}"  target="_blank">
+                        <div>
+                          <img  src='../assets/images/lista.png'>  
+                        </div>
+                        <div class="ct">
+                            <p class="tit">镇江derlock预售活动</p>
+                            <hr class="ln">
+                            <p>报名时间: <span> 8月15-8月26</span></p>
+                            <p>所属商场:<span>镇江第六空间</span></p>
+                        </div>
+                        
+                    </a>
                     
-                </a>
-                
-            </li>
-           
-        </ul>
+                </li>
+               
+            </ul>
+        </div>
     </div>
+  
 </template>
 <script>
    

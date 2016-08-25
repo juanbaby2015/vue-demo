@@ -34,7 +34,14 @@
 		li {
 
 			a {
-			color:#000;
+				color:#767676;
+				border-radius:0;
+				box-sizing: border-box;
+				&:hover {
+					color: #286090;
+					text-decoration: none;
+					background-color: transparent;
+				}
 			}
 		}
 	}

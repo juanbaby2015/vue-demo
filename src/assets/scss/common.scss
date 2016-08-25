@@ -4,7 +4,16 @@
 .fr {
 	float:right;
 }
-.main {
-    margin-left:180px;
-    
+.clearfix {
+    zoom: 1;
+}
+.clearfix:before , .clearfix:after {
+    content: " ";
+    display: table;
+}
+.clearfix:before {
+    clear: both;
+}
+.main{
+	margin-left:180px;
 }
