@@ -28,10 +28,10 @@ export default function(router){
                 require(['./views/login.vue'],resolve);
             }
         },
-        '/ordinaryEdt':{
-             name:'ordinaryEdt',
+        '/productEditor':{
+             name:'productEditor',
             component: function(resolve){
-                require(['./views/ordinaryEdt.vue'],resolve);
+                require(['./views/productEditor.vue'],resolve);
             }
         }
 

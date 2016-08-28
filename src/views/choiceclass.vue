@@ -31,7 +31,7 @@
 				</div>
 			</div>
 		</div>
-		<button v-if="presell"  type="button" class="btn btn-primary next-step" id="next-step" v-link="{ path:'/presell?id='+presell}">下一步</button>
+		<button v-if="prdId"  type="button" class="btn btn-primary next-step" id="next-step" v-link="{ path:'/productEditor?id='+prdId}">下一步</button>
 
 	</div>
 </div>
@@ -313,7 +313,7 @@ var menulists =_mulists=[
 					prt:[],
 					child:[],
 					activeName:'',
-					presell:0,
+					prdId:0,
 					searchval:'',
 					searched:false
 				}
@@ -325,7 +325,7 @@ var menulists =_mulists=[
 	         	getgrp:function(index,gm,id){
 	         		this.prt=menulists[index].sub_catalogs;
 	         		this.activeName = gm;
-	         		this.presell=id;
+	         		this.prdId=id;
 	         		this.searchval='';
 	         		
 	         		
@@ -333,7 +333,7 @@ var menulists =_mulists=[
 	         	getchild:function(index,gm,id){
 	         		this.child=this.prt[index].sub_catalogs;
 	         		this.activeName = gm;
-	         		this.presell=id;
+	         		this.prdId=id;
 	         		this.searchval='';
 	         		
 	         		
@@ -341,7 +341,7 @@ var menulists =_mulists=[
 	         	},
 	         	getnd:function(gm,id){
 	         		this.activeName = gm;
-	         		this.presell=id;
+	         		this.prdId=id;
 	         		this.searchval='';
 	         		
 	         		
@@ -352,7 +352,7 @@ var menulists =_mulists=[
 	         			this.menulists=_mulists;
 	         			this.prt=[];
 	         			this.child=[];
-	         			this.presell=0;
+	         			this.prdId=0;
 	         		}
 	         		for(var i=0;i<this.menulists.length;i++){
 	         			if(this.searchval==this.menulists[i].catalog_name){
@@ -360,7 +360,7 @@ var menulists =_mulists=[
 							
 	         				this.menulists=this.menulists.slice(i,i+1);
 							this.activeName = this.searchval;
-							this.presell=this.menulists.catalog_uid;
+							this.prdId=this.menulists.catalog_uid;
 	         				this.prt=[];
 	         				this.searched=true;
 	         				 
@@ -371,12 +371,11 @@ var menulists =_mulists=[
 	         				if(this.searchval==_list.catalog_name){
 	         					
 								this.searched=true;
-								
 								this.menulists=this.menulists.slice(i,i+1);
 								this.prt=this.menulists[i].sub_catalogs.slice(j,j+1);
 								
 								this.activeName = this.searchval;
-								this.presell=this.prt[0].catalog_uid;
+								this.prdId=this.prt[0].catalog_uid;
 								this.child=[];
 									return
 								
@@ -394,7 +393,7 @@ var menulists =_mulists=[
 											this.prt=this.menulists[i].sub_catalogs.slice(j,j+1);
 	         					 			this.child=this.menulists[i].sub_catalogs[j].sub_catalogs.slice(k,k+1);
 	         					 			this.activeName = this.child[0].catalog_name;
-											this.presell=this.child[0].catalog_uid;
+											this.prdId=this.child[0].catalog_uid;
 											return;
 	         					 			
 	         					 			 
