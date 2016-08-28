@@ -1,11 +1,12 @@
 'use strict';
 
 import Vue from 'vue'
+import Validator from 'vue-validator'
+Vue.use(Validator)
 import VueRouter from 'vue-router'
 import VueResource from 'vue-resource'
 import routerMap from './routers'
 import FastClick from 'fastclick'
-
 
 
 Vue.use(VueResource);

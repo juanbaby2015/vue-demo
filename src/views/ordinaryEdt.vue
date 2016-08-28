@@ -1,10 +1,7 @@
 <template>
     <hditem></hditem>
-	<div class="clearfix p-ordinaryEdt">
-        <lfbar></lfbar>
-        <div class="main">
-             <midetior></midetior>
-        </div>   
+	<div class="p-ordinaryEdt">
+             <midetior></midetior>  
     </div>
 </template>
 <script>
@@ -15,7 +12,6 @@
             }
         },
         components:{
-            "lfbar":require('../components/leftbar.vue'),
             "hditem":require('../components/header.vue'),
             "midetior":require('../components/edtior.vue')
         }

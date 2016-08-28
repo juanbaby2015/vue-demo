@@ -1,12 +1,10 @@
 <template>
     <hditem></hditem>
-    <div class="clearfix">
-        <lfbar ></lfbar>
-        <div class="main">
+    <div class="p-index">
             <p class="tit">活动报名</p>
             <ul class="ac_list">
                  <li v-for="list in activitylist">
-                    <a href="{{list.link}}"  target="_blank">
+                    <a  v-link="{ path:'/presell'+'?id='+list.id}"  target="_blank">
                         <div>
                           <img  src='../assets/images/lista.png'>  
                         </div>
@@ -22,7 +20,6 @@
                 </li>
                
             </ul>
-        </div>
     </div>
   
 </template>
@@ -32,25 +29,22 @@
     export default {
         data(){
             return {
-                
                 activitylist:[
-                    {url:"list1.png",link:"#1"},
-                    {url:"list2.png",link:"#1"},
-                    {url:"list1.png",link:"#1"},
-                    {url:"list2.png",link:"#1"}
+                    {url:"list1.png",id:1},
+                    {url:"list2.png",id:2},
+                    {url:"list1.png",id:3},
+                    {url:"list2.png",id:4}
                 ]
 
             }
         },
         components:{
-            "lfbar":require('../components/leftbar.vue'),
             "hditem":require('../components/header.vue')
         }
     }
 </script>
 <style lang="sass">
-    .main {
-       
+    .p-index {
         >.tit {
             text-align: center;
             font-size:18px;

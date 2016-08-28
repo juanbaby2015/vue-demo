@@ -21,7 +21,7 @@
 					</tr>
 				</thead>
 				<tbody>
-					<tr v-for="list in props.productlist">
+					<tr v-for="list in props">
 
 						<td>
 							<img src="../assets/images/tb1.png"></td>
@@ -44,11 +44,11 @@
 						</td>
 						<td>
 							<div v-if='list.status==1'>
-								<button type="button" class="btn btn-info" v-link="{ path:'/'+ props.editorpath+'?id='+list.id}">编辑</button>
+								<button type="button" class="btn btn-info" v-link="{ path:'/choiceclass'}">编辑</button>
 								<button type="button" class="btn btn-danger"  >取消报名</button>
 							</div>
-							<div v-if='list.status==2'  v-link="{ path:'/'+ props.editorpath+'?id='+list.id}">
-								<button type="button" class="btn btn-info" v-link="{ path:'/'+ props.editorpath+'?id='+list.id}">编辑</button>
+							<div v-if='list.status==2' >
+								<button type="button" class="btn btn-info" v-link="{ path:'/choiceclass'}">编辑</button>
 							</div>
 							<div v-if='list.status==3'>
 								<button type="button" class="btn btn-danger" >重新报名</button>
@@ -63,7 +63,7 @@
 			<div class="layer_notice" >
 				<table class="table table-striped iframetb">
 					<tbody>
-						<tr v-for="list in props.productlist">
+						<tr v-for="list in props">
 
 							<td >
 								<img src="../assets/images/tb1.png"></td>
@@ -80,7 +80,7 @@
 			</div>
 			<div class="choiceprocut">
 				<div class="cl">
-					<button type="button" class="btn btn-success" @click="remsd()"><a v-link="{ path:'/'+ props.editorpath}">选择新建商品</a></button>
+					<button type="button" class="btn btn-success" @click="remsd()"><a v-link="{ path:'/choiceclass'}">选择新建商品</a></button>
 				</div>
 				<div class="cl">
 					<button type="button" class="btn btn-info" @click="getprd()">选择已有商品</button>
@@ -104,7 +104,7 @@
 					});
             },
             getprd:function(){
-            	$('.layui-layer-close').triggle("click");
+            	$('.layui-layer-close').click();
 	    		 layer.open({
 					  type: 1,
 					  area: ['420px', '600px'], //宽高
@@ -113,9 +113,11 @@
 					    
 					  }
 					});
+					
+
             },
             remsd:function(){
-            	$('.layui-layer-close').triggle("click");
+            	$('.layui-layer-close').click();
             }
         },
     }
@@ -131,8 +133,8 @@
 		}
 	.layer_notice {
 		display: none;
-		overflow:scroll;
-		height:600px;
+		overflow-y:scroll;
+		height:540px;
 		
 		.layui-layer-page {
 			

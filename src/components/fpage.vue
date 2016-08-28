@@ -66,7 +66,7 @@ export default {
 </script>
 <style lang="sass">
     .pagefenye {
-        text-align:right;
+        margin-left:20px;
         ul,li{
             margin: 0px;
             padding: 0px;

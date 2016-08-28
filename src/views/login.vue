@@ -11,13 +11,11 @@
 						<input type="text" id="username" name="j_username" placeholder="手机号码">
 					</div>
 				</div>
-				<div class="validateCode">
+				<div class="validateCode" placeholder="请输入密码">
 					<div class="validateCodeInner">
-						<input type="text" id="validateCode" maxlength="4" name="validateCode" placeholder="验证码">
+						<input type="password" >
 					</div>
-					<div id="validateCodeContainer">
-						<img alt="loading..."  id="imgCode"  title="看不清，换一张" src="/tntbos/imageCode.jpeg?1472003481774" class="code">
-					</div>
+					
 				</div>
 				<input type="submit" id="loginBtn" value="登 录">
 			

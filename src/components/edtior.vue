@@ -1,131 +1,237 @@
 <template>
-  <form class="m-edtior" @submit="getvalidate()">
-    <div class="item clearfix">
-      <label class="item-title fl">商品类目：</label>
-      <div class="fl edit">
-        <span>父类目/子类目/儿子类目</span>
-        <button type="button" class="btn btn-link glyphicon glyphicon-pencil" v-link="{path:'/choiceclass'}">编辑</button>
+  <validator name="validation1">
+    <form class="m-edtior" novalidate>
+      <div class="item clearfix">
+        <label class="item-title fl">商品类目：</label>
+        <div class="fl edit">
+          <span>父类目/子类目/儿子类目</span>
+          <button type="button" class="btn btn-link glyphicon glyphicon-pencil" v-link="{path:'/choiceclass'}">编辑</button>
+        </div>
       </div>
-    </div>
-    <div class="item clearfix">
-      <label class="item-title fl">商品主图：</label>
-      <div class="fl">
-        <div class="pic glyphicon glyphicon-plus-sign"></div>
+      <div class="item clearfix">
+        <label class="item-title fl">商品主图：</label>
+        <div class="fl">
+          <div class="pic imgPreview" id="pic1">
+              <img src="" alt="" id="img1">
+            </div>
+            <span class="glyphicon glyphicon-plus-sign filebox">
+               <input type="file" class="myfile"  @change='previewImage(this,"pic1","img1")'>
+            </span>
+        </div>
       </div>
-    </div>
-    <div class="item clearfix">
-      <label class="item-title fl">商品标题</label>
-      <div class="fl">
-        <input type="text" v-model="titleMsg">
-      </div>
-      <p class="fl tip">商品名称信息不唯一，字数限制为100个字符</p>
-    </div>
-    <div class="item clearfix">
-      <label class="item-title fl">商品详情：</label>
-      <div class="fl">
-        <div class="pic glyphicon glyphicon-plus-sign"></div>
-      </div>
-    </div>
-    <div class="item clearfix">
-      <label class="item-title fl">大小：</label>
-      <div class="fl">
-        <input type="text"></div>
-    </div>
-    <div class="item clearfix">
-      <label class="item-title fl">尺寸：</label>
-      <div class="fl">
-        <input type="text"></div>
-    </div>
-    <div class="item clearfix">
-      <label class="item-title fl">原价：</label>
-      <div class="fl">
-        <input type="text"></div>
-    </div>
-    <div class="item clearfix">
-      <label class="item-title fl">活动价</label>
-      <div class="fl">
-        <input type="text">
-      </div>
-    </div>
-    <p>次商品活动金额比较大，采取分阶段付款的形式：线上支付定金99元，线下支付尾款x元</p>
-    <div class="item clearfix">
-      <label class="fl mr-20">是否采用特权订金 :</label>
-        <input type="radio" name="sthandsel"> 否
-        <input type="radio" name="sthandsel"> 是
-    </div>
-    <div class="item clearfix">
-      <label class="item-title fl">预付订金：</label>
-      <div class="fl">
-        <input type="text">
-      </div>
-      <label class="fl ml-20">门店抵用：</label>
-      <div class="fl">
-        <input type="text">
-      </div>
-    </div>
-    <p>玩法说明玩法说明测试玩法说明测试玩法说明测试玩法说明测试玩法说明测试测试</p>
-    <div class="item clearfix">
-      <label class="item-title fl">活动库存：</label>
-      <div class="fl">
-        <input type="text">
-      </div>
-    </div>
-    <div class="item clearfix">
-      <label class="item-title fl">物流服务：</label>
-        <input type="radio" name="stlogistics"> 无
-        <input type="radio" name="stlogistics"> 免费
-        <input type="radio" name="stlogistics"> 收费
-    </div>
-    <div class="item clearfix">
-      <label class="item-title fl">安装服务：</label>
-        <input type="radio" name="stinstall"> 无
+      <div class="item clearfix">
+        <label class="item-title fl">商品标题</label>
+        <div class="fl">
+          <input id="prdctname" type="text" v-validate:prdctname="{required: true, maxlength: 3}" ></div>
+        <p class="errors fl tip">
+          <span v-if="$validation1.prdctname.required">商品名称信息不能为空</span>
+          <span v-if="$validation1.prdctname.maxlength">长度不超过100个字符</span>
 
-        <input type="radio" name="stinstall"> 免费
-        <input type="radio" name="stinstall"> 收费
-    </div>
-    <div class="item clearfix">
-      <label class="item-title fl">质保年限：</label>
-      <div class="fl">
-        <input type="text">
+        </p>
       </div>
-    </div>
-    <div class="item clearfix">
-      <label class="item-title fl">所选商场</label>
-      <div class="fl checkbox">
-          <input type="radio"> 镇江大都会门店1
-          <input type="radio"> 镇江大都会门店2
-    </div>
-    <div class="item clearfix">
-      <label class="item-title fl">详情图: </label>
-      <div class="fl">
-        <a href="">上传文件</a>
-        <span>请您将jpg、png图片先放在文件夹内，然后点此按钮上传文件夹</span>
+      <div class="item clearfix">
+        <label class="item-title fl">商品详情：</label>
+        <div class="fl">
+          <div class="pic" id="pic2">
+            <img src="" alt="" id="img2">
+          </div>
+           <span class="glyphicon glyphicon-plus-sign filebox">
+               <input type="file" class="myfile"   @change='previewImage(this,"pic2","img2")'>
+            </span>
+        </div>
       </div>
-    </div>
-    <div class="item clearfix">
-      <label class="item-title fl">描叙: </label>
-      <div class="fl">
-        <textarea name="" id="" cols="50" rows="5" placeholder="请您填写此商品的价值点、我们会有的放矢的为您优化上线商品"></textarea>
+      <div class="item clearfix">
+        <label class="item-title fl" for="username">大小：</label>
+        <div class="fl username-field">
+          <input type="text" id="username" type="text" ></div>
       </div>
-    </div>
-  </form>
+      <div class="item clearfix">
+        <label class="item-title fl">尺寸：</label>
+        <div class="fl">
+          <input type="text"></div>
+      </div>
+      <div class="item clearfix">
+        <label class="item-title fl"   >原价：</label>
+        <div class="fl">
+          <input type="text" v-validate:oldprice="['numform']" ></div>
+      </div>
+      <p class="errors">
+        <span v-if="$validation1.oldprice.numform">只能输入数字，小数点后两位，小数点前最长7位</span>
+        <span v-if="$validation1.oldprice.required">不能为空</span>
+      </p>
+      <div class="item clearfix">
+        <label class="item-title fl" type="text"  >活动价</label>
+        <div class="fl">
+          <input type="text" v-validate:lowprice="['numform']"></div>
+      </div>
+      <p class="errors">
+        <span v-if="$validation1.lowprice.numform">只能输入数字，小数点后两位，小数点前最长7位</span>
+      </p>
+      <p>
+        <span class="cashtips">次商品活动金额比较大，采取分阶段付款的形式：</span>
+        线上支付定金99元，线下支付尾款x元
+      </p>
+      <div class="item clearfix">
+        <label class="fl mr-20">是否采用特权订金 :</label>
+        <input type="radio" name="sthandsel" checked value="0">
+        否
+        <input type="radio" name="sthandsel" value="1">是</div>
+      <div class="item clearfix">
+        <label class="item-title fl">预付订金：</label>
+        <div class="fl">
+          <input type="text" v-validate:prepay="['numform']" ></div>
 
-</template>
-<script>
+        <label class="fl ml-20">门店抵用：</label>
+        <div class="fl">
+          <input type="text" v-validate:vouchers="['numform']" ></div>
+      </div>
+      <p class="errors">
+        <span v-if="$validation1.prepay.numform">只能输入数字，小数点后两位，小数点前最长7位</span>
+        <span v-if="$validation1.vouchers.numform">只能输入数字，小数点后两位，小数点前最长7位</span>
+      </p>
+      <p>玩法说明玩法说明测试玩法说明测试玩法说明测试玩法说明测试玩法说明测试测试</p>
+      <div class="item clearfix">
+        <label class="item-title fl">活动库存：</label>
+        <div class="fl">
+          <input type="text"></div>
+      </div>
+      <div class="item clearfix">
+        <label class="item-title fl">物流服务：</label>
+        <input type="radio" name="stlogistics" checked>
+        无
+        <input type="radio" name="stlogistics">
+        免费
+        <input type="radio" name="stlogistics">收费</div>
+      <div class="item clearfix">
+        <label class="item-title fl">安装服务：</label>
+        <input type="radio" name="stinstall" checked>
+        无
+        <input type="radio" name="stinstall">
+        免费
+        <input type="radio" name="stinstall">收费</div>
+      <div class="item clearfix">
+        <label class="item-title fl">质保年限：</label>
+        <div class="fl">
+          <input type="text" v-validate:years="{ maxlength: 60 }"></div>
+      </div>
+      <p class="errors">
+        <span v-if="$validation1.years.maxlength">长度不能超过60个字符</span>
+      </p>
+      <div class="item clearfix">
+        <label class="item-title fl">所选商场</label>
+        <div class="fl checkbox">
+          <input type="radio">
+          镇江大都会门店1
+          <input type="radio">镇江大都会门店2</div>
+        <div class="item clearfix">
+          <label class="item-title fl">详情图:</label>
+          <div class="fl">
+            <a href="">上传文件</a>
+            <span>请您将jpg、png图片先放在文件夹内，然后点此按钮上传文件夹</span>
+          </div>
+        </div>
+        <div class="item clearfix">
+          <label class="item-title fl">描叙:</label>
+          <div class="fl">
+            <textarea name="memo" id="" cols="50" rows="5" placeholder="请您填写此商品的价值点、我们会有的放矢的为您优化上线商品" v-validate:memo="{ maxlength: 100 }"></textarea>
+          </div>
+        </div>
+        <p class="errors">
+          <span v-if="$validation1.memo.maxlength">长度不能超过100个字符</span>
+        </p>
 
-  require('../assets/scss/common.scss');
-  export default {
-    data () {
-      return {
-        'titleMsg': ' '
-      }
+        <input type="submit" value="提交" class="btn btn-success" v-if="$validation1.valid"></form>
+
+    </validator>
+
+  </template>
+  <script>
+import Vue from 'vue'
+//自定义验证
+Vue.validator('numform',
+function(val) {
+    return /^[0-9]{0,7}([.][0-9]{0,2})?$/.test(val) && val.length > 0
+});
+require('../assets/js/libs/jquery-3.1.0.js');
+require('../assets/scss/common.scss');
+export
+default {
+        replace:
+        true,
+        props: ['type', 'httpUrl'],
+        data() {
+            return {
+                formdata: {}
+            }
+        },
+        methods: {
+            previewImage: function(file, boxid, picid) {
+                var MAXWIDTH = 260;
+                var MAXHEIGHT = 180;
+                var div = document.getElementById(boxid);
+                if (file.files && file.files[0]) {
+                    div.innerHTML = '<img id=' + picid + '>';
+                    var img = document.getElementById(picid);
+                    img.onload = function() {
+                        var rect = this.clacImgZoomParam(MAXWIDTH, MAXHEIGHT, img.offsetWidth, img.offsetHeight);
+                        img.width = rect.width;
+                        img.height = rect.height;
+                        //                 img.style.marginLeft = rect.left+'px';
+                        img.style.marginTop = rect.top + 'px';
+                    }
+                    var reader = new FileReader();
+                    reader.onload = function(evt) {
+                        img.src = evt.target.result;
+                    }
+                    reader.readAsDataURL(file.files[0]);
+                } else //兼容IE
+                {
+                    var sFilter = 'filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod=scale,src="';
+                    file.select();
+                    var src = document.selection.createRange().text;
+                    div.innerHTML = '<img id=' + picid + '>';
+                    var img = document.getElementById(picid);
+                    img.filters.item('DXImageTransform.Microsoft.AlphaImageLoader').src = src;
+                    var rect = clacImgZoomParam(MAXWIDTH, MAXHEIGHT, img.offsetWidth, img.offsetHeight);
+                    status = ('rect:' + rect.top + ',' + rect.left + ',' + rect.width + ',' + rect.height);
+                    div.innerHTML = "<div id=" + picid + " style='width:" + rect.width + "px;height:" + rect.height + "px;margin-top:" + rect.top + "px;" + sFilter + src + "\"'></div>";
+                }
+            },
+            clacImgZoomParam: function(maxWidth, maxHeight, width, height) {
+                var param = {
+                    top: 0,
+                    left: 0,
+                    width: width,
+                    height: height
+                };
+                if (width > maxWidth || height > maxHeight) {
+                    rateWidth = width / maxWidth;
+                    rateHeight = height / maxHeight;
+
+                    if (rateWidth > rateHeight) {
+                        param.width = maxWidth;
+                        param.height = Math.round(height / rateWidth);
+                    } else {
+                        param.width = Math.round(width / rateHeight);
+                        param.height = maxHeight;
+                    }
+                }
+
+                param.left = Math.round((maxWidth - param.width) / 2);
+                param.top = Math.round((maxHeight - param.height) / 2);
+                return param;
+            }
+        }
+
     }
-  }
 </script>
-<style lang="sass">
+  <style lang="sass">
   .m-edtior {
     .edit {
       margin-top:-4px;
+    }
+    .cashtips {
+      color:#333;
     }
     margin: 20px;
     .item {
@@ -163,6 +269,21 @@
       font-size: 30px;
       margin-right: 20px;
     }
+     .filebox {
+      position:relative;
+      font-size:30px;
+      .myfile {
+          position:absolute;
+          width:300px;
+          height:30px;
+          left:0;
+          top:0;
+          z-index:9;
+          opacity:0;
+          width:100px;
+          height:100px;
+      }
+    }
     .mr-20 {
       margin-right:10px;
     }
@@ -171,6 +292,13 @@
     }
     input[type=radio] {
       margin:0 6px;
+    }
+    .errors {
+       span {
+        font-size:12px;
+        color:red;
+        margin-left:10px;
+       }
     }
   }
 
