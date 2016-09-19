@@ -31,12 +31,7 @@ export default {
         data(){
             return {
                 
-                activitylist:[
-                    {url:"list1.png",link:"#1"},
-                    {url:"list2.png",link:"#1"},
-                    {url:"list1.png",link:"#1"},
-                    {url:"list2.png",link:"#1"}
-                ]
+               
 
             }
         },

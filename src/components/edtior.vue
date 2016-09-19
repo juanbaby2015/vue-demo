@@ -11,12 +11,10 @@
       <div class="item clearfix">
         <label class="item-title fl">商品主图：</label>
         <div class="fl">
-          <div class="pic imgPreview" id="pic1">
-              <img src="" alt="" id="img1">
-            </div>
-            <span class="glyphicon glyphicon-plus-sign filebox">
-               <input type="file" class="myfile"  @change='previewImage(this,"pic1","img1")'>
-            </span>
+          <div class="pic imgPreview" id="pic">
+            <img src='../assets/images/static.jpg' alt="" id="img"></div>
+          <span class="glyphicon glyphicon-plus-sign filebox">
+            <input type="file" class="myfile"  @change='previewImage("file","pic","img")' id="file"></span>
         </div>
       </div>
       <div class="item clearfix">
@@ -31,14 +29,15 @@
       </div>
       <div class="item clearfix">
         <label class="item-title fl">商品详情：</label>
-        <div class="fl">
-          <div class="pic" id="pic2">
-            <img src="" alt="" id="img2">
+        <div class="uploadlist clearfix">
+            <div class="dspic" v-for="n in 20">
+              <div class="pic" id="pic-{{n}}">
+                <img src='../assets/images/static.jpg' id="img-{{n}}"></div>
+              <span class="glyphicon glyphicon-plus-sign filebox">
+                <input type="file" class="myfile"   id="file-{{n}}" @change='getfilelist(this)' ></span>
+            </div>
+     
           </div>
-           <span class="glyphicon glyphicon-plus-sign filebox">
-               <input type="file" class="myfile"   @change='previewImage(this,"pic2","img2")'>
-            </span>
-        </div>
       </div>
       <div class="item clearfix">
         <label class="item-title fl" for="username">大小：</label>
@@ -62,14 +61,14 @@
       <div class="item clearfix">
         <label class="item-title fl" type="text"  >活动价</label>
         <div class="fl">
-          <input type="text" v-validate:lowprice="['numform']"></div>
+          <input type="text" v-validate:lowprice="['numform']" v-model="payfor"></div>
       </div>
       <p class="errors">
         <span v-if="$validation1.lowprice.numform">只能输入数字，小数点后两位，小数点前最长7位</span>
       </p>
       <p>
-        <span class="cashtips">次商品活动金额比较大，采取分阶段付款的形式：</span>
-        线上支付定金99元，线下支付尾款x元
+        <span class="cashtips"><label class="grey">次商品活动金额比较大，采取分阶段付款的形式：</label></span>
+        线上支付定金99元，线下支付尾款<label class="livepay">{{payfor-99}}</label>元
       </p>
       <div class="item clearfix">
         <label class="fl mr-20">是否采用特权订金 :</label>
@@ -86,8 +85,8 @@
           <input type="text" v-validate:vouchers="['numform']" ></div>
       </div>
       <p class="errors">
-        <span v-if="$validation1.prepay.numform">只能输入数字，小数点后两位，小数点前最长7位</span>
-        <span v-if="$validation1.vouchers.numform">只能输入数字，小数点后两位，小数点前最长7位</span>
+        <span v-if="$validation1.prepay.numform">订金只能输入数字，小数点后两位，小数点前最长7位</span>
+        <span v-if="$validation1.vouchers.numform">门店抵用只能输入数字，小数点后两位，小数点前最长7位</span>
       </p>
       <p>玩法说明玩法说明测试玩法说明测试玩法说明测试玩法说明测试玩法说明测试测试</p>
       <div class="item clearfix">
@@ -120,9 +119,9 @@
       <div class="item clearfix">
         <label class="item-title fl">所选商场</label>
         <div class="fl checkbox">
-          <input type="radio">
+          <input type="radio" name="store">
           镇江大都会门店1
-          <input type="radio">镇江大都会门店2</div>
+          <input type="radio"  name="store">镇江大都会门店2</div>
         <div class="item clearfix">
           <label class="item-title fl">详情图:</label>
           <div class="fl">
@@ -156,28 +155,26 @@ require('../assets/js/libs/jquery-3.1.0.js');
 require('../assets/scss/common.scss');
 export
 default {
-        replace:
-        true,
-        props: ['type', 'httpUrl'],
         data() {
             return {
-                formdata: {}
+                type:"skill",
+                payfor:''
+
             }
         },
         methods: {
-            previewImage: function(file, boxid, picid) {
+            previewImage: function(fileid, boxid, picid) {
                 var MAXWIDTH = 260;
                 var MAXHEIGHT = 180;
+                var file=document.getElementById(fileid);
                 var div = document.getElementById(boxid);
                 if (file.files && file.files[0]) {
                     div.innerHTML = '<img id=' + picid + '>';
                     var img = document.getElementById(picid);
                     img.onload = function() {
-                        var rect = this.clacImgZoomParam(MAXWIDTH, MAXHEIGHT, img.offsetWidth, img.offsetHeight);
+                        var rect = clacImgZParam(MAXWIDTH, MAXHEIGHT, img.offsetWidth, img.offsetHeight);
                         img.width = rect.width;
                         img.height = rect.height;
-                        //                 img.style.marginLeft = rect.left+'px';
-                        img.style.marginTop = rect.top + 'px';
                     }
                     var reader = new FileReader();
                     reader.onload = function(evt) {
@@ -192,12 +189,22 @@ default {
                     div.innerHTML = '<img id=' + picid + '>';
                     var img = document.getElementById(picid);
                     img.filters.item('DXImageTransform.Microsoft.AlphaImageLoader').src = src;
-                    var rect = clacImgZoomParam(MAXWIDTH, MAXHEIGHT, img.offsetWidth, img.offsetHeight);
+                    var rect = clacImgZParam(MAXWIDTH, MAXHEIGHT, img.offsetWidth, img.offsetHeight);
                     status = ('rect:' + rect.top + ',' + rect.left + ',' + rect.width + ',' + rect.height);
-                    div.innerHTML = "<div id=" + picid + " style='width:" + rect.width + "px;height:" + rect.height + "px;margin-top:" + rect.top + "px;" + sFilter + src + "\"'></div>";
+                    div.innerHTML = "<div id=" + picid + " style='width:" + rect.width + "px;height:" + rect.height + "px;" + sFilter + src + "\"'></div>";
                 }
             },
-            clacImgZoomParam: function(maxWidth, maxHeight, width, height) {
+            getfilelist:function(e){
+              var $input=$(e.$event.target),
+                  $pic=$input.parents('.dspic').find('.pic'),
+                  $img=$pic.find('img');
+                  e.previewImage($input.attr('id'), $pic.attr('id'), $img.attr('id'));
+            }
+           
+        }
+
+    }
+ function clacImgZParam(maxWidth, maxHeight, width, height) {
                 var param = {
                     top: 0,
                     left: 0,
@@ -221,9 +228,7 @@ default {
                 param.top = Math.round((maxHeight - param.height) / 2);
                 return param;
             }
-        }
 
-    }
 </script>
   <style lang="sass">
   .m-edtior {
@@ -232,11 +237,15 @@ default {
     }
     .cashtips {
       color:#333;
+      .grey {
+        color:#999;
+      }
     }
     margin: 20px;
     .item {
       font-size: 16px;
       margin: 15px 0;
+
       label {
         font-family: 'PingFangSC-Regular', 'PingFang SC';
         font-weight: 400;
@@ -259,29 +268,57 @@ default {
         }
       }
     }
+    .uploadlist {
+      float:left;
+      width:880px;
+    }
      .pic {
       display: inline-block;
-      width: 100px;
-      height: 100px;
+      width: 80px;
+      height: 80px;
       border: 1px solid #eee;
-      line-height: 100px;
+      line-height: 60px;
       text-align: center;
-      font-size: 30px;
-      margin-right: 20px;
+      font-size: 20px;
+      margin-right: 10px;
+      box-sizing: content-box;
+      >img {
+        width:60px;
+        height:60px;
+        display:block;
+        margin:10px;
+      }
     }
+     .dspic {
+        .pic {
+          margin-right:0;
+          width: 50px;
+          height: 50px;
+
+          >img {
+            width:40px;
+            height:40px;
+            margin:5px;
+          }
+        }
+        float:left;
+        .filebox {
+          margin:0 10px;
+        }
+        
+      }
+
      .filebox {
       position:relative;
-      font-size:30px;
+      font-size:20px;
       .myfile {
           position:absolute;
-          width:300px;
-          height:30px;
           left:0;
           top:0;
           z-index:9;
           opacity:0;
-          width:100px;
-          height:100px;
+          width:20px;
+          height:20px;
       }
     }
     .mr-20 {
