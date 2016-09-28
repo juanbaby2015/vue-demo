@@ -1,8 +1,8 @@
 'use strict';
 export default function(router){
     router.map({
-        '/':{				//首页
-            name:'list',
+        '/p/:userUid':{				//首页
+            name:'promotions',
             component: function(resolve){
 
                 require(['./views/index.vue'],resolve);
@@ -10,13 +10,13 @@ export default function(router){
             }
         }
         ,
-        '/presell':{				//分类
-            name:'presell',
+        '/pp/:subPromotionUid':{				//分类
+            name:'promotionproduct',
             component: function(resolve){
                 require(['./views/presell.vue'],resolve);
             }
         },
-        '/choiceclass':{                //分类
+        '/choiceclass/:subPromotionUid':{                //分类
             name:'choiceclass',
             component: function(resolve){
                 require(['./views/choiceclass.vue'],resolve);
@@ -35,5 +35,5 @@ export default function(router){
             }
         }
 
-    })
+    });
 }

@@ -1,4 +1,4 @@
-'use strict'
+'use strict';
 
 var gulp = require('gulp'),
     minifycss = require('gulp-minify-css'),
@@ -14,7 +14,7 @@ var config = require('./webpack.config');
  */
 gulp.task('clean', function(cb) {
     del(['./dist/*.js','./dist/*.css','./dist/*.map']).then(paths => {
-        console.log('Deleted files and folders:\n', paths.join('\n'));
+   
         cb();
     });
 });
@@ -24,7 +24,7 @@ gulp.task('clean', function(cb) {
  *  执行webpack打包
  */
 gulp.task('webpack',['clean'], function(cb) {
-    webpack(config, cb)
+    webpack(config, cb);
 });
 
 /** 
@@ -48,6 +48,6 @@ gulp.task('script',function(){
 });
 
 gulp.task('default', ['webpack'], function() {
-    console.log(process.env.NODE_ENV);
-    gulp.start('style','script')
-})
+   
+    gulp.start('style','script');
+});

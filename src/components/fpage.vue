@@ -1,25 +1,25 @@
 <template>
-<div class="pagefenye">
-    <div class="page-bar">
-        <ul>
-            <li v-if="cur!=1">
-                <a v-on:click="cur--">上一页</a>
-            </li>
-            <li v-for="index in indexs"  v-bind:class="{ active: cur == index}">
-                <a v-on:click="btnClick(index)">{{ index }}</a>
-            </li>
-            <li v-if="cur!=all">
-                <a v-on:click="cur++">下一页</a>
-            </li>
-            <li>
-                <a>
+    <div class="pagefenye">
+        <div class="page-bar">
+            <ul>
+                <li v-if="cur!=1">
+                    <a v-on:click="cur--">上一页</a>
+                </li>
+                <li v-for="index in indexs" v-bind:class="{ active: cur == index}">
+                    <a v-on:click="btnClick(index)">{{ index }}</a>
+                </li>
+                <li v-if="cur!=all">
+                    <a v-on:click="cur++">下一页</a>
+                </li>
+                <li>
+                    <a>
                     共 <i>{{all}}</i>
                     页
                 </a>
-            </li>
-        </ul>
+                </li>
+            </ul>
+        </div>
     </div>
-</div>
 
 
 </template>
@@ -66,19 +66,22 @@ export default {
 </script>
 <style lang="sass">
     .pagefenye {
-        margin-left:20px;
-        ul,li{
+        width: 42%;
+        margin: 0 auto;
+        margin-top: 20px;
+        ul,
+        li {
             margin: 0px;
             padding: 0px;
         }
-        .page-bar li{
+        .page-bar li {
             list-style: none;
             display: inline-block;
         }
         .page-bar li:first-child>a {
-           margin-left: 0px
+            margin-left: 0px
         }
-        .page-bar a{
+        .page-bar a {
             border: 1px solid #ddd;
             text-decoration: none;
             position: relative;
@@ -89,22 +92,20 @@ export default {
             color: #337ab7;
             cursor: pointer
         }
-        .page-bar a:hover{
+        .page-bar a:hover {
             background-color: #eee;
         }
-        .page-bar .active a{
+        .page-bar .active a {
             color: #fff;
             cursor: default;
             background-color: #337ab7;
             border-color: #337ab7;
         }
-        .page-bar i{
-            font-style:normal;
+        .page-bar i {
+            font-style: normal;
             color: #d44950;
             margin: 0px 4px;
             font-size: 12px;
         }
-
-
     }
 </style>
